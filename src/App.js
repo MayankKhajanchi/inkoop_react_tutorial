@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person';
+import './Person.css';
 
 class App extends Component {
   constructor(props){
@@ -67,11 +68,15 @@ class App extends Component {
   render() {
     return (
       <div className="App"> 
-        <Person click={this.test2.bind(this, "test2Binding")} name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person click={() => this.test3("HEY HOE")} name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person changed={this.newEvent} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        <button onClick={this.test.bind(this, "Binding")}>Change</button>
-        <button onClick={() => this.test2("Mayank")}>Revert</button>  
+        <div>
+          <Person click={this.test2.bind(this, "test2Binding")} name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+          <Person click={() => this.test3("HEY HOE")} name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+          <Person changed={this.newEvent} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        </div>
+        <div className="Person2">
+        <button className="btn btn2" onClick={this.test.bind(this, "Binding")}>Change</button>
+        <button className="btn" onClick={() => this.test2("Mayank")}>Revert</button>  
+        </div>
       </div>
     );
   }
