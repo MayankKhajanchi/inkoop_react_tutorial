@@ -10,7 +10,8 @@ class App extends Component {
         {name: 'Mayank', age: 22},
         {name: 'Bert', age: 23},
         {name: 'Ernie', age: 25}
-      ]
+      ],
+      showPerson: true
     }
   }
   test = (newName) => {
@@ -54,7 +55,6 @@ class App extends Component {
     })
     console.log("3rd");
   }
-
   newEvent = (event) => {
     this.setState({
       persons:[
@@ -64,19 +64,28 @@ class App extends Component {
       ]
     })
   }
+  toggle = () => {
+    this.setState({
+      showPerson: !this.state.showPerson
+    })
+  }
 
   render() {
     return (
       <div className="App"> 
-        <div>
-          <Person click={this.test2.bind(this, "test2Binding")} name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-          <Person click={() => this.test3("HEY HOE")} name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-          <Person changed={this.newEvent} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        </div>
-        <div className="Person2">
-        <button className="btn btn2" onClick={this.test.bind(this, "Binding")}>Change</button>
-        <button className="btn" onClick={() => this.test2("Mayank")}>Revert</button>  
-        </div>
+      <button className="btn" onClick={this.toggle}>Toggle</button>
+        {
+          this.state.showPerson ? 
+            <div>
+              <Person click={this.test2.bind(this, "test2Binding")} name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+              <Person click={() => this.test3("HEY HOE")} name={this.state.persons[1].name} age={this.state.persons[1].age}/>
+              <Person changed={this.newEvent} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+              <div className="Person2">
+                <button className="btn btn2" onClick={this.test.bind(this, "Binding")}>Change</button>
+                <button className="btn" onClick={() => this.test2("Mayank")}>Revert</button>  
+              </div>
+            </div> : null}
+        
       </div>
     );
   }
