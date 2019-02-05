@@ -53,14 +53,25 @@ class App extends Component {
     })
     console.log("3rd");
   }
+
+  newEvent = (event) => {
+    this.setState({
+      persons:[
+        {name: "Mayank", age: 22},
+        {name: 'Bert', age: 23},
+        {name: event.target.value, age: 25}
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App"> 
         <Person click={this.test2.bind(this, "test2Binding")} name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person click={() => this.test3("HEY HOE")} name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person click={() => this.test4('new binding')} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <Person changed={this.newEvent} name={this.state.persons[2].name} age={this.state.persons[2].age}/>
         <button onClick={this.test.bind(this, "Binding")}>Change</button>
-        <button onClick={() => this.test2("video 44")}>Revert</button>  
+        <button onClick={() => this.test2("Mayank")}>Revert</button>  
       </div>
     );
   }
